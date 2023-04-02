@@ -14,4 +14,4 @@ const config: IdentityVaultConfig = {
   unlockVaultOnLoad: false,
 }
 
-const key: String = 'sessionData'
+const key: string = 'sessionData'
