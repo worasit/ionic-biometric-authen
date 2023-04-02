@@ -5,7 +5,7 @@ import {
   Vault,
   VaultType,
 } from "@ionic-enterprise/identity-vault";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Capacitor } from "@capacitor/core";
 
 const config: IdentityVaultConfig = {
@@ -19,10 +19,32 @@ const config: IdentityVaultConfig = {
 };
 
 const key: string = "sessionData";
+type LockType = "NoLocking" | "Biometrics" | "SystemPasscode" | undefined;
+const getConfigUpdates = (lockType: LockType) => {
+  switch (lockType) {
+    case "Biometrics":
+      return {
+        type: VaultType.DeviceSecurity,
+        deviceSecurityType: DeviceSecurityType.Biometrics,
+      };
+    case "SystemPasscode":
+      return {
+        type: VaultType.DeviceSecurity,
+        deviceSecurityType: DeviceSecurityType.SystemPasscode,
+      };
+    default:
+      return {
+        type: VaultType.SecureStorage,
+        deviceSecurityType: DeviceSecurityType.None,
+      };
+  }
+};
 
 export const useVault = () => {
   const [session, setSession] = useState<string | undefined>(undefined);
   const [vaultIsLocked, setVaultIsLocked] = useState<boolean>(false);
+  const [lockType, setLockType] = useState<LockType>(undefined);
+
   const vault = useMemo(() => {
     return Capacitor.getPlatform() === "web"
       ? new BrowserVault(config)
@@ -40,6 +62,23 @@ export const useVault = () => {
     console.log("onUnlock");
     setVaultIsLocked(false);
   });
+
+  vault.isLocked().then(setVaultIsLocked);
+
+  useEffect(() => {
+    if (lockType) {
+      const { type, deviceSecurityType } = getConfigUpdates(lockType);
+      vault
+        .updateConfig({
+          ...vault.config,
+          type,
+          deviceSecurityType,
+        })
+        .then((r) =>
+          console.log(`updated vault config: ${type} - ${deviceSecurityType}`)
+        );
+    }
+  }, [lockType, vault]);
 
   const storeSession = async (value: string): Promise<void> => {
     setSession(value);
@@ -68,10 +107,12 @@ export const useVault = () => {
   return {
     session,
     vaultIsLocked,
+    lockType,
     storeSession,
     restoreSession,
     clearSession,
     lockVault,
     unlockVault,
+    setLockType,
   };
 };
