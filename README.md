@@ -29,3 +29,12 @@ script in the `package.json` file
 ```shell
 npm install @ionic-enterprise/identity-vault
 ```
+
+## Running with Xcode
+
+```shell
+cap sync 
+# or
+ionic capacitor copy ios
+ionic capacitor update
+```

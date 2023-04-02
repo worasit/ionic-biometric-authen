@@ -15,7 +15,14 @@ import React, { useState } from "react";
 import { useVault } from "../hooks/useVault";
 
 const Home: React.FC = () => {
-  const { session, storeSession, restoreSession } = useVault();
+  const {
+    session,
+    vaultIsLocked,
+    storeSession,
+    lockVault,
+    unlockVault,
+    clearSession,
+  } = useVault();
   const [data, setData] = useState<string>("");
   return (
     <IonPage>
@@ -38,22 +45,50 @@ const Home: React.FC = () => {
             <IonInput
               value={data}
               onIonInput={(e) => {
-                console.log("enter session: " + e.detail.value!.toString());
                 setData(e.detail.value!.toString());
               }}
             />
           </IonItem>
           <IonItem>
-            <div style={{ flex: "auto" }}>
+            <div style={{ flex: "auto", paddingTop: "20px" }}>
               <IonButton expand="block" onClick={() => storeSession(data)}>
-                Set Session Data
+                Store Session Data
+              </IonButton>
+            </div>
+          </IonItem>
+          <IonItem>
+            <div style={{ flex: "auto" }}>
+              <IonButton expand="block" onClick={() => clearSession()}>
+                Clear Session Data
+              </IonButton>
+            </div>
+          </IonItem>
+
+          <IonItem>
+            <div style={{ flex: "auto", paddingTop: "20px" }}>
+              <IonButton expand="block" onClick={lockVault}>
+                Lock Vault
+              </IonButton>
+            </div>
+          </IonItem>
+          <IonItem>
+            <div style={{ flex: "auto" }}>
+              <IonButton expand="block" onClick={unlockVault}>
+                Unlock Vault
               </IonButton>
             </div>
           </IonItem>
 
           <IonItem>
             <IonLabel>
-              <div>Session Data: {session}</div>
+              <div
+                style={{
+                  paddingTop: "20px",
+                }}
+              >
+                Session Data: {session}
+              </div>
+              <div>Vault is Locked: {vaultIsLocked.toString()}</div>
             </IonLabel>
           </IonItem>
         </IonList>
