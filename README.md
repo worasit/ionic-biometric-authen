@@ -17,8 +17,15 @@ ionic cap add ios
 
 Finally, in order to ensure that the web application bundle is copied over each build, add `cap copy` to the `build`
 script in the `package.json` file
+
 ```json
 "scripts": {
-  "build": "react-scripts build && ionic cap copy",
+"build": "react-scripts build && ionic cap copy",
 },
+```
+
+## Install Identity Vault
+
+```shell
+npm install @ionic-enterprise/identity-vault
 ```
