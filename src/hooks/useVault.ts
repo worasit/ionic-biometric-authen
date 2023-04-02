@@ -44,12 +44,15 @@ export const useVault = () => {
   const [session, setSession] = useState<string | undefined>(undefined);
   const [vaultIsLocked, setVaultIsLocked] = useState<boolean>(false);
   const [lockType, setLockType] = useState<LockType>(undefined);
+  const [vaultExists, setVaultExists] = useState<boolean>(false);
 
   const vault = useMemo(() => {
-    return Capacitor.getPlatform() === "web"
-      ? new BrowserVault(config)
-      : new Vault(config);
+    return Capacitor.isNativePlatform()
+      ? new Vault(config)
+      : new BrowserVault(config);
   }, []);
+
+  vault.doesVaultExist().then(setVaultExists);
 
   vault.onLock(async (lockEvent) => {
     console.log("onLock");
@@ -84,6 +87,12 @@ export const useVault = () => {
     }
   }, [lockType, vault]);
 
+  const clearVault = async (): Promise<void> => {
+    await vault.clear();
+    setLockType("NoLocking");
+    setSession(undefined);
+  };
+
   const storeSession = async (value: string): Promise<void> => {
     setSession(value);
     console.log("store session: " + value);
@@ -116,11 +125,14 @@ export const useVault = () => {
     session,
     vaultIsLocked,
     lockType,
+    vaultExists,
     storeSession,
     restoreSession,
     clearSession,
     lockVault,
     unlockVault,
     setLockType,
+    clearVault,
+    setVaultExists,
   };
 };
