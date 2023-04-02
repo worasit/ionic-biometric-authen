@@ -135,15 +135,15 @@ const Home: React.FC = () => {
               <IonLabel>Vault Locking Mechanism</IonLabel>
             </IonListHeader>
             <IonItem>
-              <IonLabel>Do Not Lock</IonLabel>
+              <IonLabel>SecureStorage - Do Not Lock</IonLabel>
               <IonRadio value="NoLocking" />
             </IonItem>
             <IonItem>
-              <IonLabel>Use Biometrics</IonLabel>
+              <IonLabel>DeviceSecurity - Use Biometrics</IonLabel>
               <IonRadio disabled={!canUseBiometrics} value="Biometrics" />
             </IonItem>
             <IonItem>
-              <IonLabel>Use System Passcode</IonLabel>
+              <IonLabel>DeviceSecurity - Use System Passcode</IonLabel>
               <IonRadio disabled={!canUseSystemPin} value="SystemPasscode" />
             </IonItem>
           </IonRadioGroup>
