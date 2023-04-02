@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   IonButton,
+  IonCheckbox,
   IonContent,
   IonHeader,
   IonInput,
@@ -10,9 +11,13 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
+  isPlatform,
 } from "@ionic/react";
 import "./Home.css";
 import { useVault } from "../hooks/useVault";
+import { Device } from "@ionic-enterprise/identity-vault";
+
+const isMobile = isPlatform("hybrid");
 
 const Home: React.FC = () => {
   const {
@@ -24,6 +29,19 @@ const Home: React.FC = () => {
     vaultIsLocked,
   } = useVault();
   const [data, setData] = useState<string>("");
+  const [privacyScreen, setPrivacyScreen] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isMobile) {
+      Device.isHideScreenOnBackgroundEnabled().then(setPrivacyScreen);
+    }
+  }, []);
+
+  useEffect(() => {
+    Device.setHideScreenOnBackground(privacyScreen).then((value) =>
+      console.log("setHideScreenOnBackground" + value)
+    );
+  }, [privacyScreen]);
 
   return (
     <IonPage>
@@ -86,6 +104,15 @@ const Home: React.FC = () => {
               <div>Session Data: {session}</div>
               <div>Vault is Locked: {vaultIsLocked.toString()}</div>
             </IonLabel>
+          </IonItem>
+
+          <IonItem>
+            <IonLabel>Use Privacy Screen</IonLabel>
+            <IonCheckbox
+              disabled={!isMobile}
+              checked={privacyScreen}
+              onIonChange={(e) => setPrivacyScreen(e.detail.checked!)}
+            />
           </IonItem>
         </IonList>
       </IonContent>
