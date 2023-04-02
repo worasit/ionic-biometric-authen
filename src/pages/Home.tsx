@@ -69,10 +69,12 @@ const Home: React.FC = () => {
 
         <IonList>
           <IonItem>
-            <IonLabel position="floating">Enter the "session" data</IonLabel>
-            <IonInput
+            <IonInput label="Enter the session data"
+              labelPlacement="floating"
+              clearInput={true}
               value={data}
               onIonInput={(e) => setData(e.detail.value! as string)}
+              clearOnEdit={true}
             />
           </IonItem>
 
