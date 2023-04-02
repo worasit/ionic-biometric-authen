@@ -32,4 +32,10 @@ export const useVault = () => {
     setSession(value);
     await vault.setValue(key, value);
   };
+
+  const restoreSession = async (): Promise<void> => {
+    const value = await vault.getValue(key);
+    setSession(value);
+  };
+  return { session, storeSession, restoreSession };
 };
