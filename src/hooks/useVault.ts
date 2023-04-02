@@ -33,6 +33,7 @@ export const useVault = () => {
     console.log("onLock");
     console.log(JSON.stringify(lockEvent));
     setVaultIsLocked(true);
+    setSession(undefined);
   });
 
   vault.onUnlock(() => {

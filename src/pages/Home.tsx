@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   IonButton,
   IonContent,
@@ -11,19 +12,19 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import "./Home.css";
-import React, { useState } from "react";
 import { useVault } from "../hooks/useVault";
 
 const Home: React.FC = () => {
   const {
     session,
-    vaultIsLocked,
     storeSession,
+    restoreSession,
     lockVault,
     unlockVault,
-    clearSession,
+    vaultIsLocked,
   } = useVault();
   const [data, setData] = useState<string>("");
+
   return (
     <IonPage>
       <IonHeader>
@@ -32,7 +33,7 @@ const Home: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent>
+      <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">Identity Vault</IonTitle>
@@ -44,33 +45,34 @@ const Home: React.FC = () => {
             <IonLabel position="floating">Enter the "session" data</IonLabel>
             <IonInput
               value={data}
-              onIonInput={(e) => {
-                setData(e.detail.value!.toString());
-              }}
+              onIonInput={(e) => setData(e.detail.value! as string)}
             />
           </IonItem>
-          <IonItem>
-            <div style={{ flex: "auto", paddingTop: "20px" }}>
-              <IonButton expand="block" onClick={() => storeSession(data)}>
-                Store Session Data
-              </IonButton>
-            </div>
-          </IonItem>
+
           <IonItem>
             <div style={{ flex: "auto" }}>
-              <IonButton expand="block" onClick={() => clearSession()}>
-                Clear Session Data
+              <IonButton expand="block" onClick={() => storeSession(data)}>
+                Set Session Data
               </IonButton>
             </div>
           </IonItem>
 
           <IonItem>
-            <div style={{ flex: "auto", paddingTop: "20px" }}>
+            <div style={{ flex: "auto" }}>
+              <IonButton expand="block" onClick={restoreSession}>
+                Restore Session Data
+              </IonButton>
+            </div>
+          </IonItem>
+
+          <IonItem>
+            <div style={{ flex: "auto" }}>
               <IonButton expand="block" onClick={lockVault}>
                 Lock Vault
               </IonButton>
             </div>
           </IonItem>
+
           <IonItem>
             <div style={{ flex: "auto" }}>
               <IonButton expand="block" onClick={unlockVault}>
@@ -81,13 +83,7 @@ const Home: React.FC = () => {
 
           <IonItem>
             <IonLabel>
-              <div
-                style={{
-                  paddingTop: "20px",
-                }}
-              >
-                Session Data: {session}
-              </div>
+              <div>Session Data: {session}</div>
               <div>Vault is Locked: {vaultIsLocked.toString()}</div>
             </IonLabel>
           </IonItem>
