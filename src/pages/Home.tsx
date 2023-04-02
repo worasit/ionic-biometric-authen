@@ -70,7 +70,7 @@ const Home: React.FC = () => {
         <IonList>
           <IonItem>
             <IonInput
-              label="Enter the session data"
+              label="Enter the PII data"
               labelPlacement="floating"
               clearInput={true}
               value={data}
