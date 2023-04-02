@@ -63,6 +63,10 @@ export const useVault = () => {
     setVaultIsLocked(false);
   });
 
+  vault.onError((err) => {
+    console.log("vault error: " + JSON.stringify(err));
+  });
+
   vault.isLocked().then(setVaultIsLocked);
 
   useEffect(() => {
@@ -74,7 +78,7 @@ export const useVault = () => {
           type,
           deviceSecurityType,
         })
-        .then((r) =>
+        .then(() =>
           console.log(`updated vault config: ${type} - ${deviceSecurityType}`)
         );
     }
@@ -97,11 +101,15 @@ export const useVault = () => {
   };
 
   const lockVault = async (): Promise<void> => {
-    await vault.lock();
+    await vault
+      .lock()
+      .then((value) => console.log("lockVault Completed: " + value));
   };
 
   const unlockVault = async (): Promise<void> => {
-    await vault.unlock();
+    await vault
+      .unlock()
+      .then((value) => console.log("unlockVault Completed: " + value));
   };
 
   return {
