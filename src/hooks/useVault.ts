@@ -119,6 +119,7 @@ export const useVault = () => {
     await vault
       .unlock()
       .then((value) => console.log("unlockVault Completed: " + value));
+   await restoreSession();
   };
 
   return {
