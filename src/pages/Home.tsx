@@ -82,7 +82,7 @@ const Home: React.FC = () => {
           <IonItem>
             <div style={{ flex: "auto" }}>
               <IonButton expand="block" onClick={() => storeSession(data)}>
-                Set Session Data
+                Save PII Data
               </IonButton>
             </div>
           </IonItem>
@@ -113,7 +113,7 @@ const Home: React.FC = () => {
 
           <IonItem>
             <IonLabel>
-              <div>Session Data: {session}</div>
+              <div>PII Data: {session}</div>
               <div>Vault is Locked: {vaultIsLocked.toString()}</div>
             </IonLabel>
           </IonItem>
