@@ -43,3 +43,34 @@ F
 src/react-app-env.d.ts,4/a/4a7b99bdbee5792679d347b6474463bf5e14b66d
 H
 public/assets/shapes.svg,1/e/1e25492f6bbdc92343d21f244802ea9d35bdc882
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+<
+package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+C
+capacitor.config.ts,d/b/db2de0c4fdaae9c34a88b5558ef0e682f154a8d9
+S
+#src/components/ExploreContainer.css,1/2/12a5687cc4705e7a1a35cfc615dd813277d4be1e
+G
+src/theme/variables.css,f/c/fcc60c2ef9254239950c0d93560cc9e1b51fbde4
+@
+src/App.test.tsx,1/f/1fc1c06a0502bf303f8ba35e530938a98e7e35b2
+S
+#src/components/ExploreContainer.tsx,e/3/e39b95e94bf850d21a573834fd9e79999b7a90d8
+B
+src/pages/Home.tsx,f/e/fee995f2e145c3f9ceb6f7fd48d1f22b3c792a95
+=
+src/index.tsx,5/a/5ab44fe33ca96299f51ad4778a73e425b92bf439
+F
+src/reportWebVitals.ts,d/9/d938938695d447dadda115e28781c6541f53fc4f
+E
+src/service-worker.ts,f/3/f3a790ddf6a72a4d5143ac80a23749c1963b7f99
+P
+ src/serviceWorkerRegistration.ts,8/c/8c7ff511eb456313cb54e0ad1c22859da48b35b9
+A
+src/setupTests.ts,3/9/39129446b425a1d640160c068e4194e96639eedf
+;
+src/App.tsx,8/3/835da56f32df714aaed6285a5b7fc3a7807851e4
