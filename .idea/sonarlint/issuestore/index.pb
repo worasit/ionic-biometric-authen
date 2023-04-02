@@ -11,18 +11,12 @@ A
 ionic.config.json,4/c/4cdfa813bb35271cbe37bba6b9523ac10d580135
 l
 <ios/App/App/Assets.xcassets/AppIcon.appiconset/Contents.json,1/5/15939db462470603069d926832d2d58973c625b6
-F
-ios/App/App/Info.plist,9/c/9cd136d1f50bcbe4e65669f34e9c95009a633f42
 M
 ios/App/App/AppDelegate.swift,0/8/088c5e3dbeeb0729a7a7a8d90669744d82b8f71d
-?
-ios/App/Podfile,b/b/bb925e10b288a1c45a34b34e64261e90b4fc755c
 >
 ios/.gitignore,0/3/03aa80dc04aaede1dd5625b4da5cb4fbe07baaff
 G
 .vscode/extensions.json,7/c/7cf89ab29dcfeb05af08dbd113b027290e879286
-B
-src/pages/Home.css,5/2/5296b9c9e778ae84febd3c8ffd847ed68710d58a
 D
 public/manifest.json,4/2/42e89cd2213b9d5dfae4f63522702c623170d792
 V
@@ -31,8 +25,6 @@ V
 .ios/App/App/Base.lproj/LaunchScreen.storyboard,3/7/372158d8f6d5f9836cffe6ab9112d1ed469e6238
 Y
 )ios/App/App/Assets.xcassets/Contents.json,4/7/47d299d29fbb82a87358a4a51d7ce6ef0f0f2ebd
-U
-%ios/App/App.xcodeproj/project.pbxproj,5/a/5a1207f2b5057b047ab1bf92f8ab6ce7a0d29762
 A
 package-lock.json,f/a/fa288d1472d29beccb489a676f68739ad365fc47
 `
@@ -43,34 +35,14 @@ F
 src/react-app-env.d.ts,4/a/4a7b99bdbee5792679d347b6474463bf5e14b66d
 H
 public/assets/shapes.svg,1/e/1e25492f6bbdc92343d21f244802ea9d35bdc882
-9
-	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-<
-package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
-C
-capacitor.config.ts,d/b/db2de0c4fdaae9c34a88b5558ef0e682f154a8d9
 S
 #src/components/ExploreContainer.css,1/2/12a5687cc4705e7a1a35cfc615dd813277d4be1e
 G
 src/theme/variables.css,f/c/fcc60c2ef9254239950c0d93560cc9e1b51fbde4
 @
-src/App.test.tsx,1/f/1fc1c06a0502bf303f8ba35e530938a98e7e35b2
-S
-#src/components/ExploreContainer.tsx,e/3/e39b95e94bf850d21a573834fd9e79999b7a90d8
+.prettierrc.json,1/e/1ee5d199ddbeaaa1717e65b449ac7a6f03bed689
 B
-src/pages/Home.tsx,f/e/fee995f2e145c3f9ceb6f7fd48d1f22b3c792a95
-=
-src/index.tsx,5/a/5ab44fe33ca96299f51ad4778a73e425b92bf439
-F
-src/reportWebVitals.ts,d/9/d938938695d447dadda115e28781c6541f53fc4f
-E
-src/service-worker.ts,f/3/f3a790ddf6a72a4d5143ac80a23749c1963b7f99
-P
- src/serviceWorkerRegistration.ts,8/c/8c7ff511eb456313cb54e0ad1c22859da48b35b9
-A
-src/setupTests.ts,3/9/39129446b425a1d640160c068e4194e96639eedf
-;
-src/App.tsx,8/3/835da56f32df714aaed6285a5b7fc3a7807851e4
+src/pages/Home.css,5/2/5296b9c9e778ae84febd3c8ffd847ed68710d58a

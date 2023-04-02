@@ -19,7 +19,12 @@ const config: IdentityVaultConfig = {
 };
 
 const key: string = "sessionData";
-type LockType = "NoLocking" | "Biometrics" | "SystemPasscode" | undefined;
+type LockType =
+  | "NoLocking"
+  | "Biometrics"
+  | "SystemPasscode"
+  | "CustomPasscode"
+  | undefined;
 const getConfigUpdates = (lockType: LockType) => {
   switch (lockType) {
     case "Biometrics":
@@ -31,6 +36,11 @@ const getConfigUpdates = (lockType: LockType) => {
       return {
         type: VaultType.DeviceSecurity,
         deviceSecurityType: DeviceSecurityType.SystemPasscode,
+      };
+    case "CustomPasscode":
+      return {
+        type: VaultType.CustomPasscode,
+        deviceSecurityType: DeviceSecurityType.None,
       };
     default:
       return {
@@ -119,7 +129,7 @@ export const useVault = () => {
     await vault
       .unlock()
       .then((value) => console.log("unlockVault Completed: " + value));
-   await restoreSession();
+    await restoreSession();
   };
 
   return {
